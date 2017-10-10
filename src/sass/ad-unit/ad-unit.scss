@@ -1,0 +1,136 @@
+$openwidth: 968px;
+$openheight: 248px;
+$closewidth: 100px;
+$closeheight: 31px;
+
+.ad-unit {
+    width: $openwidth;
+    height: $openheight;
+    font-family: Arial, Helvetica, sans-serif;
+    background: url('images/bg.png');
+    background-size: $openwidth $openheight;
+}
+
+#container {
+    position: absolute;
+    width: 970px;
+    height: 50px;
+    top: 0px;
+    left: 0px;
+    margin: auto;
+    overflow: hidden;
+
+    &.is-open {
+        height: 250px;
+
+        &:after {
+            content: ' ';
+            position: absolute;
+            left: 0;
+            right: 0;
+            background: black;
+            width: 970px;
+            height: 250px;
+            z-index: 999;
+            animation: lighten 2s forwards;
+        }
+    }
+}
+
+@keyframes lighten {
+    0%  {opacity: 1;}
+    99.9999%  {opacity: 0;z-index: 999;} 
+    100% {display: none; z-index: 0;}
+}
+
+#collapsed {
+    position: static;
+    display: block;
+}
+
+#exit_btn{
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:0;
+    height:0;
+    background-color:transparent;
+    cursor:pointer;
+    z-index:-1;
+}
+
+#expanded {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 970px;
+    height: 250px;
+    border: 1px solid #cccccc;
+    z-index: 300;
+    display: none;
+    box-sizing: border-box;
+}
+
+.expand_btn-wrapper {
+    width: 970px;
+    height: 50px;
+    position: absolute;
+    cursor: pointer;
+}
+
+.expand-btn {
+    height: 17px;
+    position: absolute;
+    width: 86px;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: transparent;
+    cursor: pointer;
+    z-index: 200;
+    border: 0;
+    background: url('images/show-ad-collapsed.gif');
+    background-size: 86px;
+    background-repeat: no-repeat;
+
+    &:active,
+    &:focus {
+        outline: 0;
+    }
+}
+
+.hide-btn {
+    position: absolute;
+    background: transparent;
+    border: 0;
+    font-size: 15px;
+    top: 7px;
+    right: 0px;
+    cursor: pointer;
+    color: #ffffff;
+    z-index: 5;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    text-transform: uppercase;
+    display: block;
+    float: left;
+
+    &:after {
+        background: url('images/close-ad.png');
+        content: ' ';
+        width: 95px;
+        height: 20px;
+        background-size: 95px 20px;
+        display: block;
+        float: right;
+        margin-left: 10px;
+        margin-right: 7px;
+    }
+
+    &:active,
+    &:focus {
+        outline: 0;
+    }
+}
